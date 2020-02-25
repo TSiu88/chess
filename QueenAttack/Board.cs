@@ -16,6 +16,32 @@ namespace Chess {
         }
         spaces.Add(row);
       }
+     // InitialChessSetup();
+    }
+    public void InitialChessSetup() {
+      for(int i = 0; i < 8; i++) {
+        Pawn whitePawn = new Pawn(spaces[i][6], "White");
+        Pawn blackPawn = new Pawn(spaces[i][1], "Black");
+      }
+      for(int j = 0; j < 2; j++) {
+        string color;
+        int row = 0;
+        if(j == 0) {
+          color = "Black";
+          row = 0;
+        } else {
+          color = "White";
+          row = 7;
+        }
+        new Rook(spaces[0][row], color);
+        new Knight(spaces[1][row], color);
+        new Bishop(spaces[2][row], color);
+        new Queen(spaces[3][row], color);
+        new King(spaces[4][row], color);
+        new Bishop(spaces[5][row], color);
+        new Knight(spaces[6][row], color);
+        new Rook(spaces[7][row], color);
+      }
     }
 
     public bool SelectPiece(int x, int y) {
@@ -38,75 +64,75 @@ namespace Chess {
 
     public bool CheckSpacesBetweenColumn(int rise) {
       if(rise > 0) {
-          while(rise > 1){
-            if (this.spaces[currentPiece.xCoord][currentPiece.yCoord + (rise - 1)] != null){
-              return false;
-            }
-            rise --;
+        while(rise > 1){
+          if (this.spaces[currentPiece.xCoord][currentPiece.yCoord + (rise - 1)] != null){
+            return false;
           }
-        } else {
-          while(rise < -1){
-            if (this.spaces[currentPiece.xCoord][currentPiece.yCoord + (rise + 1)] != null){
-              return false;
-            }
-            rise ++;
-          }
+          rise --;
         }
-        return true;
+      } else {
+        while(rise < -1){
+          if (this.spaces[currentPiece.xCoord][currentPiece.yCoord + (rise + 1)] != null){
+            return false;
+          }
+          rise ++;
+        }
+      }
+      return true;
     }
 
     public bool CheckSpacesBetweenRow(int run) {
-        if(run > 0) {
-          while(run > 1){
-            if (this.spaces[currentPiece.xCoord + (run - 1)][currentPiece.yCoord] != null){
-              return false;
-            }
-            run --;
+      if(run > 0) {
+        while(run > 1){
+          if (this.spaces[currentPiece.xCoord + (run - 1)][currentPiece.yCoord] != null){
+            return false;
           }
-        } else {
-          while(run < -1){
-            if (this.spaces[currentPiece.xCoord + (run + 1)][currentPiece.yCoord] != null){
-              return false;
-            }
-            run ++;
-          }
+          run --;
         }
-        return true;
+      } else {
+        while(run < -1){
+          if (this.spaces[currentPiece.xCoord + (run + 1)][currentPiece.yCoord] != null){
+            return false;
+          }
+          run ++;
+        }
+      }
+      return true;
     }
 
     public bool CheckSpacesBetweenDiagonal(int rise, int run) {
       if((run > 0) && (rise > 0)) {
-          while(rise > 1){
-            if (this.spaces[currentPiece.xCoord + (rise - 1)][currentPiece.yCoord + (rise - 1)] != null){
-              return false;
-            }
-            rise --;
+        while(rise > 1){
+          if (this.spaces[currentPiece.xCoord + (rise - 1)][currentPiece.yCoord + (rise - 1)] != null){
+            return false;
           }
-        } else if ((run < 0) && (rise < 0)) {
-          while(rise < -1){
-            if (this.spaces[currentPiece.xCoord + (rise + 1)][currentPiece.yCoord + (rise + 1)] != null){
-              return false;
-            }
-            rise ++;
-          }
-        } else if ((run > 0) && (rise < 0)) {
-          while ((run > 1) && (rise < -1)) {
-            if (this.spaces[currentPiece.xCoord + (run - 1)][currentPiece.yCoord + (rise + 1)] != null){
-              return false;
-            }
-            run--;
-            rise ++;
-          }
-        } else {
-          while ((run < -1) && (rise > 1)) {
-            if (this.spaces[currentPiece.xCoord + (run + 1)][currentPiece.yCoord + (rise - 1)] != null){
-              return false;
-            }
-            run++;
-            rise --;
-          }
+          rise --;
         }
-        return true;
+      } else if ((run < 0) && (rise < 0)) {
+        while(rise < -1){
+          if (this.spaces[currentPiece.xCoord + (rise + 1)][currentPiece.yCoord + (rise + 1)] != null){
+            return false;
+          }
+          rise ++;
+        }
+      } else if ((run > 0) && (rise < 0)) {
+        while ((run > 1) && (rise < -1)) {
+          if (this.spaces[currentPiece.xCoord + (run - 1)][currentPiece.yCoord + (rise + 1)] != null){
+            return false;
+          }
+          run--;
+          rise ++;
+        }
+      } else {
+        while ((run < -1) && (rise > 1)) {
+          if (this.spaces[currentPiece.xCoord + (run + 1)][currentPiece.yCoord + (rise - 1)] != null){
+            return false;
+          }
+          run++;
+          rise --;
+        }
+      }
+      return true;
     }
     public bool CheckViable(int x, int y) {
       Space targetSpace = spaces[x][y];

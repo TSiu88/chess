@@ -7,5 +7,9 @@ namespace Chess {
    public override bool CheckAll(int x, int y){
      return true;
    }
+
+  //  public SetPieceForSpace() {
+
+  //  }
   }
 }

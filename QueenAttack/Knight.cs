@@ -4,7 +4,7 @@ namespace Chess {
 
   public class Knight : Piece {
 
-    public override string Name { get; set;}
+    public override string Name { get;}
     public Knight(Space space, string color) : base (space, color) {
       Name = Color.Substring(0,1) + "Kn"; 
     }

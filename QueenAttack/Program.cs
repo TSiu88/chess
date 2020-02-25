@@ -3,18 +3,32 @@ using Chess;
 class Program
 {
   
-  Board board = new Board();
-  static void PrintBoard()
+  public static Board board = new Board();
+  public static void PrintBoard()
   {
-    Console.WriteLine("CURRENT BOARD");
-    Console.WriteLine(" [0] [1] [2] [3] [4] [5] [6] [7]");
     for (int row = 0; row < 8; row++)
     {
-      Console.WriteLine(row + "[ ] [ ] [ ] [ ] [ ] [ ] [ ] [ ]");
+      int rowNumber = 8 - row;
+      Console.Write("[" + rowNumber + "]\t");
+      for(int col = 0; col < 8; col++) {
+        string name;
+        if(board.spaces[col][row].Piece == null) {
+          name = "  ";
+        } else {
+          name = board.spaces[col][row].Piece.Name;
+        }
+        
+          Console.Write("[" + name + "]\t");
+      }
+     Console.WriteLine();
     }
-    
+    Console.WriteLine("\t[ A ]\t[ B ]\t[ C ]\t[ D ]\t[ E ]\t[ F ]\t[ G ]\t[ H ]\t");
   }
 
+  public void Turn() {
+    Console.WriteLine(board.Color + "'s turn");
+    Console.WriteLine("To select a piece rovide x and y coordinates for");
+  }
   static void SelectPiece()
   {
     // select grid spot --> selects piece in this spot IFF piece exists
@@ -41,9 +55,10 @@ class Program
   }
   static void Main()
   {
+    board.InitialChessSetup();
+    PrintBoard();
     //PrintBoard();
-
-    SelectPiece();
+    Console.ReadLine();
 
     //If player is white, user can select white pieces
     //board uses selectPiece, current Piece = 
