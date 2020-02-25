@@ -24,20 +24,20 @@ class Program
     Console.WriteLine("Enter the Row (y coordinate) of the piece you want to select");
     string pieceYString = Console.ReadLine();
     int pieceY = int.Parse(pieceYString);
-    if (board.SelectPiece(pieceX, pieceY)) // if piece == null, what happens? wrong color?
-    {
-      //piece is selected
-      // do we need to return the piece?
-    }
-    else 
-    {
-      Console.WriteLine("You do not have a piece in this space. Would you like to select another space? ['Y' for yes, 'enter' for no]");
-      string attemptAnswer = Console.ReadLine();
-      if (attemptAnswer == "y" || attemptAnswer == "Y")
-      {
-        SelectPiece();
-      }
-    }
+    // if (board.SelectPiece(pieceX, pieceY)) // if piece == null, what happens? wrong color?
+    // {
+    //   //piece is selected
+    //   // do we need to return the piece?
+    // }
+    // else 
+    // {
+    //   Console.WriteLine("You do not have a piece in this space. Would you like to select another space? ['Y' for yes, 'enter' for no]");
+    //   string attemptAnswer = Console.ReadLine();
+    //   if (attemptAnswer == "y" || attemptAnswer == "Y")
+    //   {
+    //     SelectPiece();
+    //   }
+    // }
   }
   static void Main()
   {

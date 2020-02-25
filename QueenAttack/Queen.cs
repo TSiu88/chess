@@ -1,11 +1,9 @@
 using System;
 
 namespace Chess {
-public class Queen {
+public class Queen : Piece {
   
-  public Queen(Space space) : base (space) {
-    XCoord = space.XCoord;
-    YCoord = space.yCoord;
+  public Queen(Space space, string color) : base (space, color) {
   }
 
   public override bool CheckAll(int x, int y) {
@@ -16,22 +14,22 @@ public class Queen {
     }
   }
   public bool CheckSameColumn(int x, int y) {
-    if(XCoord == x) {
+    if(xCoord == x) {
       return true;
     } else {
       return false;
     }
   }
   public bool CheckSameRow(int x, int y) {
-    if(YCoord == y) {
+    if(yCoord == y) {
       return true;
     } else {
       return false;
     }
   }
   public bool CheckDiagonal(int x, int y) {
-    int rise = (y - YCoord);
-    int run = (x - XCoord);
+    int rise = (y - yCoord);
+    int run = (x - xCoord);
     if(Math.Abs(rise/run) == 1) {
       return true;
     } else {

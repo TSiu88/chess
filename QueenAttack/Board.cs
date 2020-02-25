@@ -1,13 +1,16 @@
+using System;
+using System.Collections.Generic;
+
 namespace Chess {
   public class Board {
     public string Color { get; set; }
     public Piece currentPiece {get; set; }
-    public Array[] spaces = new Array[];
+    public List<List<Space>> spaces = new List<List<Space>>();
     
     public Board() {
       Color = "White";
       for(int i = 0; i < 8; i++) {
-        Space[] row = new Space[];
+        List<Space> row = new List<Space>();
         for(int j = 0; j < 8; j++) {
           row.Add(new Space(i, j));
         }
@@ -53,7 +56,7 @@ namespace Chess {
     }
 
     public bool CheckSpacesBetweenRow(int run) {
-                if(run > 0) {
+        if(run > 0) {
           while(run > 1){
             if (this.spaces[currentPiece.xCoord + (run - 1)][currentPiece.yCoord] != null){
               return false;
@@ -103,6 +106,7 @@ namespace Chess {
             rise --;
           }
         }
+        return true;
     }
     public bool CheckViable(int x, int y) {
       Space targetSpace = spaces[x][y];
@@ -137,17 +141,17 @@ namespace Chess {
       return true;
     }
 
-    public bool Move(int x, int y) {
-      // code for "en passant" If the chess piece moves past a pawn
-    }
+    // public bool Move(int x, int y) {
+    //   // code for "en passant" If the chess piece moves past a pawn
+    // }
 
-    public bool Attack(int x, int y) {
-      Space space = this.spaces[x][y];
-      if(space.Piece != null) {
-        space.Piece = null;
-        space.Piece = this.currentPiece;
-        return true;
-      }
-    }
+    // public bool Attack(int x, int y) {
+    //   Space space = this.spaces[x][y];
+    //   if(space.Piece != null) {
+    //     space.Piece = null;
+    //     space.Piece = this.currentPiece;
+    //     return true;
+    //   }
+    // }
   }
 }

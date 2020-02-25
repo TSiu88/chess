@@ -1,26 +1,22 @@
+using System;
+
 namespace Chess {
 
-  public class Knight {
+  public class Knight : Piece {
 
-    public override string Name {
-      get;
-      set {
-        string colorLetter = Color.Substring(0,1);
-        Name = colorLetter + "Kn";
-      }
+    public override string Name { get; set;}
+    public Knight(Space space, string color) : base (space, color) {
+      Name = Color.Substring(0,1) + "Kn"; 
     }
-
-    public Knight(Space space) : base (space){}
     public override bool CheckAll(int x, int y){
-      int run = x - this.space.xCoord;
-      int rise = y -this.space.yCoord;
-      if((Math.abs(run) == 2 && Math.abs(rise) == 1 ) ||  (Math.abs(run) == 1 && Math.abs(rise) == 2)) {
+      int run = x -  xCoord;
+      int rise = y - yCoord;
+      if((Math.Abs(run) == 2 && Math.Abs(rise) == 1 ) ||  (Math.Abs(run) == 1 && Math.Abs(rise) == 2)) {
         return true;
       }
       else {
         return false;
       }
-        
     }
   }
 }

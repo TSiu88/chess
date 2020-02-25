@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/projects/queen-attack/QueenAttack/QueenAttack.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/projects/Chess/QueenAttack/QueenAttack.csproj",
       "projectName": "QueenAttack",
-      "projectPath": "/Users/Guest/Desktop/projects/queen-attack/QueenAttack/QueenAttack.csproj",
+      "projectPath": "/Users/Guest/Desktop/projects/Chess/QueenAttack/QueenAttack.csproj",
       "packagesPath": "/Users/Guest/.nuget/packages/",
-      "outputPath": "/Users/Guest/Desktop/projects/queen-attack/QueenAttack/obj/",
+      "outputPath": "/Users/Guest/Desktop/projects/Chess/QueenAttack/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
