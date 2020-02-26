@@ -1,7 +1,7 @@
 namespace Chess {
 public abstract class Piece {
 
-  public string Color { get;}
+  public string Color { get; set;}
   
   public virtual string Name { get;}
 
@@ -11,6 +11,7 @@ public abstract class Piece {
 
   public int yCoord { get; set; }
 
+  public Piece() {}
   public Piece(Space space, string color) {
     Color = color;
     Name = Color.Substring(0,1) + this.GetType().Name.Substring(0,1);

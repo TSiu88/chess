@@ -3,6 +3,7 @@ using System;
 namespace Chess {
 public class Queen : Piece {
   
+  public Queen(){}
   public Queen(Space space, string color) : base (space, color) {
   }
 
